@@ -13,11 +13,30 @@ namespace MVCSecurity.Models
             {
                 UserAccount account = new UserAccount();
                 account.UserName = userName;
-                account.Roles = new List<string>() { "Admin", "User" };
+                account.Roles = new List<string>() {  "user" };
                 return account;
             }
             else
                 return null;
+        }
+
+        internal string[] GetUserRoles(string username)
+        {
+            if (HttpContext.Current!=null && HttpContext.Current.Session["User"]!=null)
+            {
+                UserAccount account =(UserAccount) HttpContext.Current.Session["User"];
+                if (account.UserName == username)
+                {
+                    return account.Roles.ToArray();
+                }
+                else
+                    return new string[0];
+            }
+            else
+            {
+                return new string[0];
+
+            }
         }
     }
 }

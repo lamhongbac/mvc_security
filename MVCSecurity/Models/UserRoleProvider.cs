@@ -37,7 +37,10 @@ namespace MVCSecurity.Models
 
         public override string[] GetRolesForUser(string username)
         {
-            throw new NotImplementedException();
+            //Implement the logic to resolve the user's name
+            SecurityHandler securityHandler = new SecurityHandler();
+          return  securityHandler.GetUserRoles(username);
+           
         }
 
         public override string[] GetUsersInRole(string roleName)
@@ -47,7 +50,15 @@ namespace MVCSecurity.Models
 
         public override bool IsUserInRole(string username, string roleName)
         {
-            throw new NotImplementedException();
+            string[] roles = GetRolesForUser(username);
+            foreach (string role in roles)
+            {
+                if (roleName.Equals(role, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)

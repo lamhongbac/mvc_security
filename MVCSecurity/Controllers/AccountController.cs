@@ -22,7 +22,7 @@ namespace MVCSecurity.Controllers
            UserAccount account= securityHandler.Login(model.UserName, model.Password,true);
             if (account!=null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "AdminFunciton");
             }
             return View("Index");
 
