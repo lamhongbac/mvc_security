@@ -11,9 +11,25 @@ namespace MVCSecurity.Models
         {
             if (OK)
             {
+                 
                 UserAccount account = new UserAccount();
+                
                 account.UserName = userName;
-                account.Roles = new List<string>() {  "user" };
+                if (userName == "Bac")
+                {
+                    account.UserID = "200270";
+                    account.Roles = new List<string>() { "USER" };
+                }
+                if (userName == "Supper")
+                {
+                    account.UserID = "210270";
+                    account.Roles = new List<string>() { "USER","ADMIN", "SUPERADMIN" };
+                }
+                if (userName == "Admin")
+                {
+                    account.UserID = "220270";
+                    account.Roles = new List<string>() { "USER", "ADMIN" };
+                }
                 return account;
             }
             else

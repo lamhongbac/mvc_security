@@ -34,7 +34,11 @@ namespace MVCSecurity.Models
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// tra ve danh sach role phuc vu cho Roles=("role1,role2,..")
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public override string[] GetRolesForUser(string username)
         {
             //Implement the logic to resolve the user's name
