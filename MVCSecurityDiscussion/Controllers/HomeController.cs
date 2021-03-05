@@ -14,7 +14,7 @@ namespace MVCSecurityDiscussion.Controllers
         /// ong ke nay chi xuat hien khi login la admin
         /// </summary>
         /// <returns></returns>
-        [Authorize(Roles ="admin")]
+        [MSAAuthorize(Roles ="admin")]
         public ActionResult AdditionalFunction()
         {
             return View();
@@ -29,7 +29,7 @@ namespace MVCSecurityDiscussion.Controllers
         {
             return View();
         }
-        [debugAuthorize(ORGs = "saomai,msa")]
+        [MSAAuthorize(ORGs = "saomai,msa")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -41,7 +41,7 @@ namespace MVCSecurityDiscussion.Controllers
         /// nhung user click vao se bao loi
         /// </summary>
         /// <returns></returns>
-        [Authorize(Roles ="admin,supper")]
+        [MSAAuthorize(Roles ="admin,supper")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -54,6 +54,7 @@ namespace MVCSecurityDiscussion.Controllers
         {
             return View();
         }
+        [AllowAnonymous]
         public ActionResult AccessDenied()
         {
             return View();
